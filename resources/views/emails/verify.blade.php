@@ -7,10 +7,13 @@
         <h2>Please verify your email address</h2>
 
         <div>
-            Thanks for creating an account with the verification demo app. Please follow the link below to verify your email
-            address {{ URL::to('register/verify/' . $confirmation_code) }}.<br/>
+            Thanks for creating an account with SimpleNote! Please verify your email
+            address <a href="{{ URL::to('register/verify/' . $confirmation_code) }}"> here</a>.<br/>
 
-            If you have problems, please paste the above URL into your web browser.
+            If you have problems, please paste the below URL into your web browser.
+            <pre>
+                {{ URL::to('register/verify/' . $confirmation_code) }}
+            </pre>
 
         </div>
 

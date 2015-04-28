@@ -53,7 +53,7 @@ class RegistrationController extends Controller {
         ]);
 
         \Mail::send('emails.verify', compact('confirmation_code'), function($message) {
-            $message->to(Input::get('email'), Input::get('username'))->subject('Verify your email address');
+            $message->to(Input::get('email'), Input::get('username'))->subject('SimpleNote - Verify your email address');
         });
 
         Flash::message('Thanks for signing up! Please check your email and follow the instructions to complete the sign up process');
