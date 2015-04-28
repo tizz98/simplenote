@@ -17,7 +17,7 @@
       </li>
 
       <li role="presentation">
-        <a href="#" class="dropdown-toggle" data-toggle='dropdown' role='button' aria-expanded='false'>Account <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle='dropdown' role='button' aria-expanded='false'>{{ Auth::User()->name }} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="#"><i class="fa fa-fw fa-cogs"></i> Settings</a></li>
           <li class="divider"></li>
