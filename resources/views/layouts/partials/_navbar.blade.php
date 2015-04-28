@@ -1,7 +1,7 @@
 <div class="header clearfix">
   <nav>
     <ul class="nav nav-pills pull-right">
-      <li role="presentation"><a href="{{ url('/') }}">Home</a></li>
+      <li role="presentation" class="{{ Helper::setActive(['/', 'home']) }}"><a href="{{ url('/') }}">Home</a></li>
       @if (Auth::guest())
       <li role="presentation" class="{{ Helper::setActive('auth/register') }}"><a href="{{ url('/auth/register') }}">Register</a></li>
       <li role="presentation" class="{{ Helper::setActive('auth/login') }}"><a href="{{ url('/auth/login') }}">Login</a></li>
