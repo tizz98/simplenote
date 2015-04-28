@@ -19,19 +19,3 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
-/*
- * Registration
- */
-Route::get('register', [
-    'as' => 'register_path',
-    'uses' => 'RegistrationController@create'
-]);
-Route::post('register', [
-    'as' => 'register_path',
-    'uses' => 'RegistrationController@store'
-]);
-Route::get('register/verify/{confirmationCode}', [
-    'as' => 'confirmation_path',
-    'uses' => 'RegistrationController@confirm'
-]);
