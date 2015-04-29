@@ -8,11 +8,11 @@
 
         <div>
             Thanks for creating an account with SimpleNote! Please verify your email
-            address <a href="{{ URL::to('register/verify/' . $confirmation_code) }}"> here</a>.<br/>
+            address <a href="{{ URL::to('auth/register/verify/' . $confirmation_code) }}"> here</a>.<br/>
 
             If you have problems, please paste the below URL into your web browser.
             <pre>
-                {{ URL::to('register/verify/' . $confirmation_code) }}
+                {{ URL::to('auth/register/verify/' . $confirmation_code) }}
             </pre>
 
         </div>
