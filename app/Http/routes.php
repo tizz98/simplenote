@@ -24,15 +24,15 @@ Route::get('home', [
 /*
  * Registration
  */
-Route::get('register', [
+Route::get('auth/register', [
     'as' => 'register_path',
     'uses' => 'RegistrationController@create'
 ]);
-Route::post('register', [
+Route::post('auth/register', [
     'as' => 'register_path',
     'uses' => 'RegistrationController@store'
 ]);
-Route::get('register/verify/{confirmationCode}', [
+Route::get('auth/register/verify/{confirmationCode}', [
     'as' => 'confirmation_path',
     'uses' => 'RegistrationController@confirm'
 ]);
@@ -40,15 +40,15 @@ Route::get('register/verify/{confirmationCode}', [
 /*
  * Sessions
  */
-Route::get('login', [
+Route::get('auth/login', [
     'as' => 'login_path',
     'uses' => 'SessionsController@create'
 ]);
-Route::post('login', [
+Route::post('auth/login', [
     'as' => 'login_path',
     'uses' => 'SessionsController@store'
 ]);
-Route::get('logout', [
+Route::get('auth/logout', [
     'as' => 'logout_path',
     'uses' => 'SessionsController@destroy',
 ]);
