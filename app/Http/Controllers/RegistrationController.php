@@ -58,7 +58,7 @@ class RegistrationController extends Controller {
 
         Flash::message('Thanks for signing up! Please check your email and follow the instructions to complete the sign up process');
 
-        return redirect('home');
+        return redirect()->route('home');
     }
 
     /**
@@ -73,22 +73,22 @@ class RegistrationController extends Controller {
     {
         if( ! $confirmation_code)
         {
-            return redirect('home');
+            return redirect()->route('home');
         }
 
         $user = User::whereConfirmationToken($confirmation_code)->first();
 
         if ( ! $user)
         {
-            return redirect('home');
+            return redirect()->route('home');
         }
 
         $user->confirmed = 1;
-        $user->confirmation_code = null;
+        $user->confirmation_token = null;
         $user->save();
 
         \Flash::message('You have successfully verified your account. You can now login.');
 
-        return redirect('login_path');
+        return redirect()->route('login_path');
     }
 }
