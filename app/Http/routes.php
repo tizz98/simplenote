@@ -11,6 +11,10 @@
 |
 */
 
+if (getenv('APP_ENV') == 'production') {
+    URL::forceSchema('https');
+}
+
 Route::get('/', [
 	'as' => 'index',
 	'uses' => 'WelcomeController@index'
