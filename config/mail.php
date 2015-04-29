@@ -1,5 +1,24 @@
 <?php
 
+if (getenv('APP_ENV') == 'local')
+{
+	$driver = env('MAIL_DRIVER', 'smtp');
+	$host = env('MAIL_HOST', 'smtp.mailgun.org');
+	$port = env('MAIL_PORT', 587);
+	$address = env('MAIL_FROM_ADDRESS', null);
+	$name = env('MAIL_NAME', null);
+	$username = env('MAIL_USERNAME');
+	$password = env('MAIL_PASSWORD');
+} else {
+	$driver = getenv('MAIL_DRIVER');
+	$host = getenv('MAIL_HOST');
+	$port = getenv('MAIL_PORT');
+	$address = getenv('MAIL_FROM_ADDRESS');
+	$name = getenv('MAIL_NAME');
+	$username = getenv('MAIL_USERNAME');
+	$password = getenv('MAIL_PASSWORD');
+}
+
 return [
 
 	/*
@@ -15,7 +34,7 @@ return [
 	|
 	*/
 
-	'driver' => env('MAIL_DRIVER', 'smtp'),
+	'driver' => $driver,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +47,7 @@ return [
 	|
 	*/
 
-	'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+	'host' => $host,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +60,7 @@ return [
 	|
 	*/
 
-	'port' => env('MAIL_PORT', 587),
+	'port' => $port,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +73,8 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => $address,
+			   'name' => $name],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,7 +87,7 @@ return [
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => 'ssl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +100,7 @@ return [
 	|
 	*/
 
-	'username' => env('MAIL_USERNAME'),
+	'username' => $username,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +113,7 @@ return [
 	|
 	*/
 
-	'password' => env('MAIL_PASSWORD'),
+	'password' => $password,
 
 	/*
 	|--------------------------------------------------------------------------

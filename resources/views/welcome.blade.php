@@ -1,48 +1,33 @@
-<html>
-	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('layouts.default')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+@section('content')
+<div class="jumbotron">
+	<h1>Welcome to SimpleNote!</h1>
+	<p class="lead">Create simpler, more elegant notes with only the information you need in the simplest way possible.</p>
+	<p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+</div>
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+<div class="row marketing">
+	<div class="col-lg-6">
+		<h4>Subheading</h4>
+		<p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+		<h4>Subheading</h4>
+		<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+		<h4>Subheading</h4>
+		<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+	</div>
 
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
-</html>
+	<div class="col-lg-6">
+		<h4>Subheading</h4>
+		<p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+		<h4>Subheading</h4>
+		<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+		<h4>Subheading</h4>
+		<p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+	</div>
+</div>
+@endsection
