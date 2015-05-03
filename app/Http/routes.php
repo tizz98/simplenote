@@ -69,3 +69,8 @@ Route::post('settings/email', [
     'as' => 'changeEmail',
     'uses' => 'SettingsController@changeEmail'
 ]);
+
+Route::post('settings/password', [
+    'as' => 'changePassword',
+    'uses' => 'SettingsController@changePassword'
+]);

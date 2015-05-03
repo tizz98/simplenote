@@ -48,9 +48,35 @@ class SettingsController extends Controller {
         $user->email = Input::get('email');
         $user->save();
 
-        Flash::message('Email successfully updated!');
+        Flash::success('Email successfully updated!');
 
         return redirect()->route('settings');
+	}
+
+	public function changePassword()
+	{
+		$rules = [
+			'current_password' => 'required|min:6',
+			'new_password' => 'required|confirmed|min:6'
+		];
+
+		if (!\Hash::check(Input::get('current_password'), \Auth::User()->password)) {
+			Flash::error('Incorrect current password!');
+			return redirect()->route('settings');
+		}
+
+		$validator = \Validator::make(Input::only('current_password', 'new_password', 'new_password_confirmation'), $rules);
+
+		if ($validator->fails()) {
+			return redirect()->back()->withInput()->withErrors($validator);
+		}
+
+		$user = \Auth::User();
+		$user->password = \Hash::make(Input::get('new_password'));
+		$user->save();
+
+		Flash::success('Password successfully changed!');
+		return redirect()->route('settings');
 	}
 
 }

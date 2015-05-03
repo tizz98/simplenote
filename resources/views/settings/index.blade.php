@@ -7,13 +7,20 @@
 <br>
 @include('flash::message')
 @include('layouts.partials._errors')
-<div class="form-horizontal form-group">
-    <label for="username" class="col-sm-2 control-label">Username</label>
-    <div class="col-sm-10">
-        <p class="form-control-static">{{ Auth::User()->username }}</p>
-    </div>
+<div class="form-horizontal">
+	<div class="form-group">
+	    <label for="username" class="col-sm-2 control-label">Username</label>
+	    <div class="col-sm-10">
+	        <p class="form-control-static">{{ Auth::User()->username }}</p>
+	    </div>
+   </div>
+   <div class="form-group">
+	    <label for="name" class="col-sm-2 control-label">Name</label>
+	    <div class="col-sm-10">
+	        <p class="form-control-static">{{ Auth::User()->name }}</p>
+	    </div>
+	</div>
 </div>
-<br>
 {!! Form::open(['class' => 'form-horizontal', 'route' => 'changeEmail']) !!}
     <div class="form-group">
         <label for="email" class="col-sm-2 control-label">Email</label>
@@ -26,23 +33,23 @@
 <br>
 <hr>
 <br>
-{!! Form::open(['class' => 'form-horizontal']) !!}
+{!! Form::open(['class' => 'form-horizontal', 'route' => 'changePassword']) !!}
     <div class="form-group">
         <label for="current_password" class="col-sm-2 control-label">Current Password</label>
         <div class="col-sm-10">
-            <input type="text" name="current_password" class="form-control" placeholder="Current password...">
+            <input type="password" name="current_password" class="form-control" placeholder="Current password...">
         </div>
     </div>
     <div class="form-group">
         <label for="new_password" class="col-sm-2 control-label">New Password</label>
         <div class="col-sm-10">
-            <input type="text" name="new_password" class="form-control" placeholder="New password...">
+            <input type="password" name="new_password" class="form-control" placeholder="New password...">
         </div>
     </div>
     <div class="form-group">
-        <label for="new_password_confirm" class="col-sm-2 control-label">Confirm Password</label>
+        <label for="new_password_confirmation" class="col-sm-2 control-label">Confirm Password</label>
         <div class="col-sm-10">
-            <input type="text" name="new_password_confirm" class="form-control" placeholder="Confirm password...">
+            <input type="password" name="new_password_confirmation" class="form-control" placeholder="Confirm password...">
         </div>
     </div>
     <button class="btn-outline-red" type="submit"><i class="fa fa-fw fa-key"></i> Change Password</button>

@@ -16,10 +16,10 @@
         </ul>
       </li>
 
-      <li role="presentation">
+      <li role="presentation" class="{{ Helper::setActive('settings') }}">
         <a href="#" class="dropdown-toggle" data-toggle='dropdown' role='button' aria-expanded='false'>{{ Auth::User()->name }} <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#"><i class="fa fa-fw fa-cogs"></i> Settings</a></li>
+          <li><a href="{{ url('/settings') }}"><i class="fa fa-fw fa-cogs"></i> Settings</a></li>
           <li class="divider"></li>
           <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>
         </ul>
