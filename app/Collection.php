@@ -29,5 +29,8 @@ class Collection extends Model {
 	 */
 	protected $fillable = ['name', 'color', 'is_public'];
 
-
+	public function user()
+	{
+		return $this->belongsTo('Auth\User');
+	}
 }

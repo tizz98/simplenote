@@ -33,12 +33,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function collections()
 	{
-		$this->hasMany('App\Collection');
+		return $this->hasMany('App\Collection');
 	}
 
 	public function notes()
 	{
-		$this->hasMany('App\Note');
+		return $this->hasMany('App\Note');
 	}
 
 }

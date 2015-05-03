@@ -25,7 +25,7 @@ class CollectionsController extends Controller {
 	 */
 	public function index()
 	{
-		$collections = Collection::all();
+		$collections = User::find(Auth::User()->id)->collections;
 		return view('collections.index', compact('collections'));
 	}
 
@@ -65,6 +65,9 @@ class CollectionsController extends Controller {
         	'is_public' => Input::get('is_public')
         ]);
 
+        $user = Auth::User();
+        $user->collections()->save($collection);
+
         Flash::success('Collection created!');
 
         return redirect()->route('collections.show', $collection->id);
@@ -78,7 +81,8 @@ class CollectionsController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$collection = Collection::find($id);
+		return view('collections.show', compact('collection'));
 	}
 
 	/**
