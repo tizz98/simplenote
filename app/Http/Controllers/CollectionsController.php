@@ -1,11 +1,22 @@
 <?php namespace App\Http\Controllers;
 
+use App\Collection;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use App\User;
+use Illuminate\Support\Facades\Input;
+use Flash;
+use Auth;
 
 use Illuminate\Http\Request;
 
 class CollectionsController extends Controller {
+
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +25,8 @@ class CollectionsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$collections = Collection::all();
+		return view('collections.index', compact('collections'));
 	}
 
 	/**
@@ -24,7 +36,7 @@ class CollectionsController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('collections.create');
 	}
 
 	/**
@@ -34,7 +46,28 @@ class CollectionsController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$rules = [
+			'name' => 'required|min:2',
+			'color' => 'required|max:7|min:3',
+			'is_public' => 'required'
+		];
+
+		$validator = \Validator::make(Input::only('name', 'color', 'is_public'), $rules);
+	
+        if($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $collection = Collection::create([
+        	'name' => Input::get('name'),
+        	'color' => Input::get('color'),
+        	'is_public' => Input::get('is_public')
+        ]);
+
+        Flash::success('Collection created!');
+
+        return redirect()->route('collections.show', $collection->id);
 	}
 
 	/**

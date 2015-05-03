@@ -74,3 +74,5 @@ Route::post('settings/password', [
     'as' => 'changePassword',
     'uses' => 'SettingsController@changePassword'
 ]);
+
+Route::resource('collections', 'CollectionsController');
