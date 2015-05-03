@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Support\Facades\Input;
 use Flash;
+use Auth;
 
 class RegistrationController extends Controller {
 
@@ -18,7 +19,14 @@ class RegistrationController extends Controller {
 	 */
 	public function create()
 	{
-        return view('registration.create');
+        if (Auth::guest())
+        {
+            return view('registration.create');
+        }
+        else
+        {
+            return redirect('home');
+        }
 	}
 
 	/**
