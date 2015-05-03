@@ -56,3 +56,16 @@ Route::get('auth/logout', [
     'as' => 'logout_path',
     'uses' => 'SessionsController@destroy',
 ]);
+
+/*
+ * Settings
+ */
+Route::get('settings', [
+    'as' => 'settings',
+    'uses' => 'SettingsController@index'
+]);
+
+Route::post('settings/email', [
+    'as' => 'changeEmail',
+    'uses' => 'SettingsController@changeEmail'
+]);
