@@ -33,4 +33,9 @@ class Collection extends Model {
 	{
 		return $this->belongsTo('Auth\User');
 	}
+
+	public function notes()
+	{
+		return $this->hasMany('App\Note');
+	}
 }

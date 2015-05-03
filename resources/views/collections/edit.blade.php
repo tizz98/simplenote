@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Create new Collection - ')
+@section('title', 'Edit Collection - ')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/kube-btns.css') }}">
@@ -8,12 +8,12 @@
 @endsection
 
 @section('content')
-<h2>Create new Collection</h2>
+<h2>Edit {{ $collection->name }} Collection</h2>
 <br>
 @include('flash::message')
 @include('layouts.partials._errors')
-{!! Form::open(['route' => 'collections.store']) !!}
-	@include('collections.partials._form', ['name_val' => '', 'color_val' => '', 'is_public_val' => 0])
+{!! Form::open(['method' => 'PATCH', 'route' => ['collections.update', $collection->id]]) !!}
+	@include('collections.partials._form', ['name_val' => $collection->name, 'color_val' => $collection->color, 'is_public_val' => $is_public])
 {!! Form::close() !!}
 @endsection
 
@@ -25,8 +25,6 @@
         $('#buttons').buttons({
             target: '#is-public-target'
         });
-
-        $('#color-picker input').val(get_random_color());
 
         $('#color-picker').colorpicker();
     });

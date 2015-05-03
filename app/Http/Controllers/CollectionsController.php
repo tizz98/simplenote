@@ -93,7 +93,17 @@ class CollectionsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$collection = Collection::find($id);
+		if ($collection->is_public)
+		{
+			$is_public = 1;
+		}
+		else
+		{
+			$is_public = 0;
+		}
+
+		return view('collections.edit', compact('collection', 'is_public'));
 	}
 
 	/**
@@ -104,7 +114,33 @@ class CollectionsController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$collection = Collection::find($id);
+
+		$rules = [
+			'name' => 'required|min:2',
+			'color' => 'required|max:7|min:3',
+			'is_public' => 'required'
+		];
+
+		if (Auth::User()->id != $collection->user_id) {
+			Flash::warning('You are not authorized to do that');
+			return redirect()->route('home');
+		}
+
+		$validator = \Validator::make(Input::only('name', 'color', 'is_public'), $rules);
+	
+        if($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $collection->name = Input::get('name');
+        $collection->color = Input::get('color');
+        $collection->is_public = Input::get('is_public');
+
+        $collection->save();
+
+        return redirect()->route('collections.show', $collection->id);
 	}
 
 	/**
