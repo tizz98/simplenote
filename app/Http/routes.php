@@ -76,3 +76,5 @@ Route::post('settings/password', [
 ]);
 
 Route::resource('collections', 'CollectionsController');
+
+Route::resource('notes', 'NotesController');

@@ -6,11 +6,11 @@
       <li role="presentation" class="{{ Helper::setActive('auth/register') }}"><a href="{{ url('/auth/register') }}">Register</a></li>
       <li role="presentation" class="{{ Helper::setActive('auth/login') }}"><a href="{{ url('/auth/login') }}">Login</a></li>
       @else
-      <li role="presentation" class="{{ Helper::setActive(['collections']) }}">
+      <li role="presentation" class="{{ Helper::setActive(['collections', 'notes']) }}">
         <a href="#" class="dropdown-toggle" data-toggle='dropdown' role='button' aria-expanded='false'>Notes <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="#"><i class="fa fa-fw fa-files-o"></i> My Notes</a></li>
-          <li><a href="#"><i class="fa fa-fw fa-file-text-o"></i> Create Note</a></li>
+          <li><a href="{{ url('/notes') }}"><i class="fa fa-fw fa-files-o"></i> My Notes</a></li>
+          <li><a href="{{ url('/notes/create') }}"><i class="fa fa-fw fa-file-text-o"></i> Create Note</a></li>
           <li class="divider"></li>
           <li><a href="{{ url('/collections') }}"><i class="fa fa-fw fa-book"></i> My Collections</a></li>
         </ul>

@@ -1,0 +1,32 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input type="text" class="form-control" id="title" name="title" placeholder="Enter note title">
+</div>
+<div class="form-group">
+  <label for="collection">Collection</label>
+  <select class="form-control" name="collection">
+    <option value="0">-----------</option>
+    @foreach($collections as $collection)
+    <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+    @endforeach
+  </select>
+</div>
+<p id='buttons' class='btn-group'>
+  <button class="btn" value="1"><i class="fa fa-fw fa-users"></i> Public</button>
+  <button class="btn" value="0"><i class="fa fa-fw fa-user-secret"></i> Private</button>
+</p>
+<input type="hidden" id="is-private-target" value="0" name="is_public">
+<textarea id="redactor" name="body_text"></textarea>
+<div id="preview">
+  <h3 class="red">Preview</h3>
+  <div id="phtml"></div>
+</div>
+
+<p id="btn-preview">
+  <button type="button" class="btn-outline" onclick="previewNote()"><i class="fa fa-fw fa-eye"></i> Preview</button>
+</p>
+
+<p id="btn-save" style="display: none;">
+  <button class="btn-outline" type="button" onclick="editNote()"><i class="fa fa-fw fa-pencil-square-o"></i> Edit</button>
+  <button class="btn-outline" type="submit"><i class="fa fa-fw fa-floppy-o"></i> Save</button>
+</p>
