@@ -151,7 +151,17 @@ class CollectionsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$collection = Collection::find($id);
+
+		if (Auth::User()->id != $collection->user_id) {
+			Flash::warning('You are not authorized to do that');
+			return redirect()->route('home');
+		}
+
+		$collection->delete();
+
+		Flash::info('Collection deleted!');
+		return redirect()->route('collections.index');
 	}
 
 }
