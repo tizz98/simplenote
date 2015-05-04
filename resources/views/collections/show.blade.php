@@ -3,5 +3,6 @@
 @section('title'){{$collection->name}} Collection - @endsection
 
 @section('content')
-<h2>{{ $collection->name }}</h2>
+@include('collections.partials._info')
+<hr>
 @endsection
