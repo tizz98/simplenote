@@ -2,8 +2,13 @@
 
 @section('title', 'Notes - ')
 
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert.css') }}">
+@endsection
+
 @section('content')
 <h2>Notes</h2>
+@include('flash::message')
 @forelse ($notes as $note)
 <div class="note">
 @include('notes.partials._info')
@@ -15,4 +20,9 @@
 @empty
 <h4>No notes at this time...</h4>
 @endforelse
+@endsection
+
+@section('js')
+<script src="{{ asset('js/delete.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 @endsection

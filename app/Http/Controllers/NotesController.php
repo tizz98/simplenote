@@ -105,7 +105,8 @@ class NotesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$note = Note::find($id);
+		return view('notes.edit', compact('note'));
 	}
 
 	/**
@@ -127,7 +128,17 @@ class NotesController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$note = Note::find($id);
+
+		if (Auth::User()->id != $note->user_id) {
+			Flash::warning('You are not authorized to do that');
+			return redirect()->route('home');
+		}
+
+		$note->delete();
+
+		Flash::info('Note deleted!');
+		return redirect()->route('notes.index');
 	}
 
 	public function clear_tags($str)
