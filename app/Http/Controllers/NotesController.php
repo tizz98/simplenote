@@ -130,16 +130,6 @@ class NotesController extends Controller {
 		//
 	}
 
-	public function is_referer()
-	{
-	    if (!isset($_SERVER['HTTP_REFERER'])) return false;
-	 
-	    $url = parse_url($_SERVER['HTTP_REFERER']);
-	 
-	    if ($url['host'] == getenv('HOSTNAME')) return true;
-	    else return false;
-	}
-
 	public function clear_tags($str)
 	{
 	    return strip_tags($str, '<code><span><div><label><a><br><p><b><i><del><strike><u><img><video><audio><iframe><object><embed><param><blockquote><mark><cite><small><ul><ol><li><hr><dl><dt><dd><sup><sub><big><pre><code><figure><figcaption><strong><em><table><tr><td><th><tbody><thead><tfoot><h1><h2><h3><h4><h5><h6>');

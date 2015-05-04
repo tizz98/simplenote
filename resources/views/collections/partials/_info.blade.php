@@ -9,10 +9,10 @@
 	</li>
 	<li>
 		@if (count($collection->notes) > 0)
-			@if (count($collection->notes) > 1)
+			@if (count($collection->notes) == 1)
 				<i class="fa fa-fw fa-file-o"></i> contains 1 note
 			@else
-				<i class="fa fa-fw fa-files-o"></i> contains {{ count($collection->notes) }}
+				<i class="fa fa-fw fa-files-o"></i> contains {{ count($collection->notes) }} notes
 			@endif
 		@else
 			<i class="fa fa-fw fa-file"></i> contains no notes

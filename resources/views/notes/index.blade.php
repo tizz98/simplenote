@@ -2,10 +2,6 @@
 
 @section('title', 'Notes - ')
 
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('css/kube.btns.css') }}">
-@endsection
-
 @section('content')
 <h2>Notes</h2>
 @forelse ($notes as $note)
