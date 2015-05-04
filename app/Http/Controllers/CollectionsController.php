@@ -140,6 +140,7 @@ class CollectionsController extends Controller {
 
         $collection->save();
 
+        Flash::success('Collection updated!');
         return redirect()->route('collections.show', $collection->id);
 	}
 
