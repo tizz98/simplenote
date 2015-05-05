@@ -1,13 +1,17 @@
 <div class="form-group">
   <label for="title">Title</label>
-  <input type="text" class="form-control" id="title" name="title" placeholder="Enter note title">
+  <input type="text" class="form-control" id="title" name="title" value="{{ $title_val }}">
 </div>
 <div class="form-group">
   <label for="collection">Collection</label>
   <select class="form-control" name="collection">
-    <option value="0">-----------</option>
+    <option value="0" @if($collection_val == 0)
+    selected="selected"
+    @endif >-----------</option>
     @foreach($collections as $collection)
-    <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+    <option value="{{ $collection->id }}" @if($collection->id == $collection_val)
+    selected="selected"
+    @endif>{{ $collection->name }}</option>
     @endforeach
   </select>
 </div>
@@ -15,8 +19,8 @@
   <button class="btn" value="1"><i class="fa fa-fw fa-users"></i> Public</button>
   <button class="btn" value="0"><i class="fa fa-fw fa-user-secret"></i> Private</button>
 </p>
-<input type="hidden" id="is-private-target" value="0" name="is_public">
-<textarea id="redactor" name="body_text"></textarea>
+<input type="hidden" id="is-private-target" value="{{ $is_public_val }}" name="is_public">
+<textarea id="redactor" name="body_text">{!! $body_text_val !!}</textarea>
 <div id="preview">
   <h3 class="red">Preview</h3>
   <div id="phtml"></div>

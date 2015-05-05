@@ -106,7 +106,17 @@ class NotesController extends Controller {
 	public function edit($id)
 	{
 		$note = Note::find($id);
-		return view('notes.edit', compact('note'));
+		$collections = User::find(Auth::User()->id)->collections;
+
+		if ($note->is_public) {
+			$is_public = 1;
+		}
+		else
+		{
+			$is_public = 0;
+		}
+
+		return view('notes.edit', compact('note', 'is_public', 'collections'));
 	}
 
 	/**
@@ -117,7 +127,38 @@ class NotesController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+		$note = Note::find($id);
+
+		$rules = [
+			'title' => 'required|min:2',
+			'body_text' => 'required|min:5|max:10000',
+			'is_public' => 'required'
+		];
+
+		if (Auth::User()->id != $note->user_id) {
+			Flash::warning('You are not authorized to do that');
+			return redirect()->route('home');
+		}
+
+		$validator = \Validator::make(Input::only('title', 'body_text', 'is_public'), $rules);
+	
+        if($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        $note->title = Input::get('title');
+        $note->body_text = Input::get('body_text');
+        $note->is_public = Input::get('is_public');
+        $note->collection_id = null;
+
+        if (Input::get('collection') > 0)
+        {
+        	$collection = Collection::find(Input::get('collection'));
+        	$collection->notes()->save($note);
+        }
+
+        $note->save();
 	}
 
 	/**
