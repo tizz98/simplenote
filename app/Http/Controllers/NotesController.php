@@ -159,6 +159,9 @@ class NotesController extends Controller {
         }
 
         $note->save();
+
+        Flash::info('Note updated!');
+		return redirect()->route('notes.show', $note->id);
 	}
 
 	/**
