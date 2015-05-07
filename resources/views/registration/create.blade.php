@@ -3,6 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
+            @include('flash::message')
             <h1>Register</h1>
 
             @include('layouts.partials._errors')

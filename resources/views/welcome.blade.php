@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
+@include('flash::message')
 <div class="jumbotron">
 	<h1>Welcome to SimpleNote!</h1>
 	<p class="lead">Create simpler, more elegant notes with only the information you need in the simplest way possible.</p>

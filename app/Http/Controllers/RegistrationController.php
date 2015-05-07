@@ -64,9 +64,9 @@ class RegistrationController extends Controller {
             $message->to(Input::get('email'), Input::get('username'))->subject('SimpleNote - Verify your email address');
         });
 
-        Flash::message('Thanks for signing up! Please check your email and follow the instructions to complete the sign up process');
+        Flash::success('Thanks for signing up! Please check your email and follow the instructions to complete the sign up process.');
 
-        return redirect()->route('home');
+        return redirect()->route('index');
     }
 
     /**
@@ -95,7 +95,7 @@ class RegistrationController extends Controller {
         $user->confirmation_token = null;
         $user->save();
 
-        \Flash::message('You have successfully verified your account. You can now login.');
+        \Flash::success('You have successfully verified your account. You can now login.');
 
         return redirect()->route('login_path');
     }

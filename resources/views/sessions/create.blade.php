@@ -4,7 +4,7 @@
 
 
 <h1>Sign In</h1>
-
+@include('flash::message')
 @include('layouts.partials._errors')
 
 {!! Form::open(['route' => 'login_path']) !!}
