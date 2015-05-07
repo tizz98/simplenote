@@ -16,7 +16,7 @@ class NotesController extends Controller {
 
 	public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'show']);
     }
 
 	/**
@@ -94,6 +94,15 @@ class NotesController extends Controller {
 	public function show($id)
 	{
 		$note = Note::find($id);
+
+		if (!$note->is_public) {
+			if(!Auth::check()) {
+				return redirect()->route('login_path');
+			} elseif (Auth::User() != $note->user) {
+				return view('layouts.unauthorized');
+			}
+		}
+
 		return view('notes.show', compact('note'));
 	}
 

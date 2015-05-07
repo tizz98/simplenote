@@ -31,7 +31,7 @@ class Collection extends Model {
 
 	public function user()
 	{
-		return $this->belongsTo('Auth\User');
+		return $this->belongsTo('App\User');
 	}
 
 	public function notes()

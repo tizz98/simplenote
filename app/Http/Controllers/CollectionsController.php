@@ -15,7 +15,7 @@ class CollectionsController extends Controller {
 
 	public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'show']);
     }
 
 	/**
@@ -82,9 +82,28 @@ class CollectionsController extends Controller {
 	public function show($id)
 	{
 		$collection = Collection::find($id);
-		for ($i=0; $i < count($collection->notes); $i++) { 
-			$collection->notes[$i]->shortText = substr($collection->notes[$i]->body_text, 0, 500);
+
+		if (!$collection->is_public){
+			if(!Auth::check()) {
+				return redirect()->route('login_path');
+			} elseif (Auth::User() != $collection->user) {
+				return view('layouts.unauthorized');
+			}
 		}
+
+		$temp_notes = array();
+
+		for ($i=0; $i < count($collection->notes); $i++) { 
+			$note = $collection->notes[$i];
+
+			if ($note->is_public || ($note->user == Auth::User())) {
+				$note->shortText = substr($note->body_text, 0, 500);
+				array_push($temp_notes, $note);
+			}
+		}
+
+		$collection->notes = $temp_notes;
+
 		return view('collections.show', compact('collection'));
 	}
 
