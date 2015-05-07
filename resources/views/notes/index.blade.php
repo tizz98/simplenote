@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<h2>Notes</h2>
+<h2>Notes <a href="{{ url('/notes/create') }}" class="no-dec"><i class="fa fa-fw fa-plus-square-o"></i></a></h2>
 @include('flash::message')
 @forelse ($notes as $note)
 <div class="note">
