@@ -10,6 +10,15 @@
 @include('flash::message')
 @include('collections.partials._info')
 <hr>
+@foreach($collection->notes as $note)
+<div class="note">
+	@include('notes.partials._info')
+	{!! $note->shortText !!}
+	@if (strlen($note->shortText) < strlen($note->body_text))
+	 | <a href="{{ route('notes.show', $note->id) }}" class="link">more &rarr;</a>
+	 @endif
+</div>
+@endforeach
 @endsection
 
 @section('js')

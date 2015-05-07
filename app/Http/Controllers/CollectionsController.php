@@ -82,6 +82,9 @@ class CollectionsController extends Controller {
 	public function show($id)
 	{
 		$collection = Collection::find($id);
+		for ($i=0; $i < count($collection->notes); $i++) { 
+			$collection->notes[$i]->shortText = substr($collection->notes[$i]->body_text, 0, 500);
+		}
 		return view('collections.show', compact('collection'));
 	}
 
