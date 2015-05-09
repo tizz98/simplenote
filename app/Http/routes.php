@@ -25,6 +25,10 @@ Route::get('home', [
 	'uses' => 'HomeController@index'
 ]);
 
+Route::controllers([
+    'password' => 'Auth\PasswordController',
+]);
+
 /*
  * Registration
  */

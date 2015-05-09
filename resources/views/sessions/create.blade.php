@@ -24,6 +24,7 @@
 <!--- Sign In Field --->
 <div class="form-group">
     {!! Form::submit('Sign In', ['class' => 'btn btn-primary']) !!}
+    <a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
 </div>
 
 {!! Form::close() !!}
