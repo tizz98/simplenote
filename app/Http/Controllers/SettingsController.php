@@ -76,6 +76,10 @@ class SettingsController extends Controller {
 		$user->password = \Hash::make(Input::get('new_password'));
 		$user->save();
 
+		\Mail::send('emails.changed_password', compact('user'), function($message) use ($user){
+			$message->to($user->email, $user->name)->subject('SimpleNote - Changed Password');
+		});
+
 		Flash::success('Password successfully changed!');
 		return redirect()->route('settings');
 	}
