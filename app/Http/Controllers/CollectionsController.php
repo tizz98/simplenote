@@ -26,7 +26,8 @@ class CollectionsController extends Controller {
 	public function index()
 	{
 		$collections = User::find(Auth::User()->id)->collections;
-		return view('collections.index', compact('collections'));
+		$active_triggers = array();
+		return view('collections.index', compact('collections', 'active_triggers'));
 	}
 
 	/**
@@ -36,7 +37,8 @@ class CollectionsController extends Controller {
 	 */
 	public function create()
 	{
-		return view('collections.create');
+		$active_triggers = array();
+		return view('collections.create', compact('active_triggers'));
 	}
 
 	/**
@@ -102,9 +104,12 @@ class CollectionsController extends Controller {
 			}
 		}
 
+		$temp_str = 'collections/' . $id;
+		$active_triggers = [$temp_str];
+
 		$collection->notes = $temp_notes;
 
-		return view('collections.show', compact('collection'));
+		return view('collections.show', compact('collection', 'active_triggers'));
 	}
 
 	/**
@@ -125,7 +130,10 @@ class CollectionsController extends Controller {
 			$is_public = 0;
 		}
 
-		return view('collections.edit', compact('collection', 'is_public'));
+		$temp_str = 'collections/' . $id . '/edit';
+		$active_triggers = [$temp_str];
+
+		return view('collections.edit', compact('collection', 'is_public', 'active_triggers'));
 	}
 
 	/**

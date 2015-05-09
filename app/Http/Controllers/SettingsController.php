@@ -21,7 +21,8 @@ class SettingsController extends Controller {
 	 */
 	public function index()
 	{
-		return view('settings.index');
+		$active_triggers = array();
+		return view('settings.index', compact('active_triggers'));
 	}
 
 	public function changeEmail()

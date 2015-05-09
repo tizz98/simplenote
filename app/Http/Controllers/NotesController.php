@@ -30,7 +30,8 @@ class NotesController extends Controller {
 		for ($i=0; $i < count($notes); $i++) { 
 			$notes[$i]->shortText = substr($notes[$i]->body_text, 0, 500);
 		}
-		return view('notes.index', compact('notes'));
+		$active_triggers = array();
+		return view('notes.index', compact('notes', 'active_triggers'));
 	}
 
 	/**
@@ -41,7 +42,8 @@ class NotesController extends Controller {
 	public function create()
 	{
 		$collections = User::find(Auth::User()->id)->collections;
-		return view('notes.create', compact('collections'));
+		$active_triggers = array();
+		return view('notes.create', compact('collections', 'active_triggers'));
 	}
 
 	/**
@@ -103,7 +105,10 @@ class NotesController extends Controller {
 			}
 		}
 
-		return view('notes.show', compact('note'));
+		$temp_str = 'notes/' . $id;
+		$active_triggers = [$temp_str];
+
+		return view('notes.show', compact('note', 'active_triggers'));
 	}
 
 	/**
@@ -125,7 +130,10 @@ class NotesController extends Controller {
 			$is_public = 0;
 		}
 
-		return view('notes.edit', compact('note', 'is_public', 'collections'));
+		$temp_str = 'notes/' . $id . '/edit';
+		$active_triggers = [$temp_str];
+
+		return view('notes.edit', compact('note', 'is_public', 'collections', 'active_triggers'));
 	}
 
 	/**

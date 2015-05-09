@@ -30,7 +30,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$active_triggers = array();
+		return view('home', compact('active_triggers'));
 	}
 
 }

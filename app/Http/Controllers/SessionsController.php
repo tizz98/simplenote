@@ -20,7 +20,8 @@ class SessionsController extends Controller {
 	 */
 	public function create()
 	{
-		return view('sessions.create');
+		$active_triggers = array();
+		return view('sessions.create', compact('active_triggers'));
 	}
 
 	/**

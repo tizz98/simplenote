@@ -32,13 +32,15 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		$active_triggers = array();
+
 		if (Auth::guest())
 		{
-			return view('welcome');
+			return view('welcome', compact('active_triggers'));
 		}
 		else
 		{
-			return redirect('home');
+			return redirect('home', compact('active_triggers'));
 		}
 		
 	}

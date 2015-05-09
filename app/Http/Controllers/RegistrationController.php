@@ -19,13 +19,15 @@ class RegistrationController extends Controller {
 	 */
 	public function create()
 	{
+        $active_triggers = array();
+
         if (Auth::guest())
         {
-            return view('registration.create');
+            return view('registration.create', compact('active_triggers'));
         }
         else
         {
-            return redirect('home');
+            return redirect('home', compact('active_triggers'));
         }
 	}
 

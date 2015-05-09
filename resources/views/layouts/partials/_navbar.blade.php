@@ -6,7 +6,7 @@
       <li role="presentation" class="{{ Helper::setActive('auth/register') }}"><a href="{{ url('/auth/register') }}">Register</a></li>
       <li role="presentation" class="{{ Helper::setActive('auth/login') }}"><a href="{{ url('/auth/login') }}">Login</a></li>
       @else
-      <li role="presentation" class="{{ Helper::setActive(['collections', 'notes']) }}">
+      <li role="presentation" class="{{ Helper::setActive(array_merge(['collections', 'notes', 'notes/create', 'collections/create'], $active_triggers)) }}">
         <a href="#" class="dropdown-toggle" data-toggle='dropdown' role='button' aria-expanded='false'>Notes <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="{{ url('/notes') }}"><i class="fa fa-fw fa-files-o"></i> My Notes</a></li>
