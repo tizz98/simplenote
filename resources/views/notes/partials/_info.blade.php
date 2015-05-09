@@ -4,4 +4,4 @@
 <a href="{{ route('collections.show', $note->collection->id) }}" class="no-dec">
 <span class="label" style="background-color:{{ $note->collection->color }}">{{ $note->collection->name }}</span></a> 
 @endif
-<a href="{{ route('notes.edit', $note->id) }}" class="no-dec"><i class="fa fa-fw fa-pencil"></i></a> {!! Form::open(['method' => 'DELETE', 'route' => ['notes.destroy', $note->id], 'style' => 'display:inline']) !!}<a href="#" onclick="del_note($(this).closest('form'))" class="no-dec"><i class="fa fa-fw fa-trash-o"></i></a>{!! Form::close() !!}</h3>
+@if($note->user == Auth::User())<a href="{{ route('notes.edit', $note->id) }}" class="no-dec"><i class="fa fa-fw fa-pencil"></i></a> {!! Form::open(['method' => 'DELETE', 'route' => ['notes.destroy', $note->id], 'style' => 'display:inline']) !!}<a href="#" onclick="del_note($(this).closest('form'))" class="no-dec"><i class="fa fa-fw fa-trash-o"></i></a>{!! Form::close() !!}@endif</h3>
