@@ -8,6 +8,7 @@
 
 @section('content')
 @include('notes.partials._info')
+@include('notes.partials._stats')
 <br>
 <div id="note-text">
 {!! $note->body_text !!}

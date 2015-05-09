@@ -9,6 +9,11 @@
 
 	<li>
 		<i class="fa fa-fw fa-font"></i>
-		{{ str_word_count($note->body_text) }} words
+		{{ str_word_count(strip_tags($note->body_text)) }}
+		@if(str_word_count(strip_tags($note->body_text)) == 1)
+			word
+		@else
+			words
+		@endif
 	</li>
 </ul>
