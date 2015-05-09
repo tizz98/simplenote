@@ -12,7 +12,7 @@
 <!--- Username Field --->
 <div class="form-group">
     {!! Form::label('username', 'Username:') !!}
-    {!! Form::text('username', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    {!! Form::text('username', $username, ['class' => 'form-control', 'required' => 'required']) !!}
 </div>
 
 <!--- Password Field --->

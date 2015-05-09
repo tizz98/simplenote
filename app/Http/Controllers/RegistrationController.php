@@ -97,8 +97,10 @@ class RegistrationController extends Controller {
         $user->confirmation_token = null;
         $user->save();
 
+        $username = $user->username;
+
         \Flash::success('You have successfully verified your account. You can now login.');
 
-        return redirect()->route('login_path');
+        return redirect()->route('login_path', compact('username'));
     }
 }
