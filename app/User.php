@@ -41,4 +41,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Note');
 	}
 
+	/**
+	 *  Returns array of a users password resets
+	 *  @return array
+	 */
+	public function pw_resets()
+	{
+		return $this->hasMany('App\PasswordResets');
+	}
+
 }
