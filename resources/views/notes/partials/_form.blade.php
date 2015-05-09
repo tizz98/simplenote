@@ -31,6 +31,7 @@
 </p>
 
 <p id="btn-save" style="display: none;">
+  <br>
   <button class="btn-outline" type="button" onclick="editNote()"><i class="fa fa-fw fa-pencil-square-o"></i> Edit</button>
   <button class="btn-outline" type="submit"><i class="fa fa-fw fa-floppy-o"></i> Save</button>
 </p>
