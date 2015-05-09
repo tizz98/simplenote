@@ -40,7 +40,7 @@ class WelcomeController extends Controller {
 		}
 		else
 		{
-			return redirect('home', compact('active_triggers'));
+			return redirect()->route('home');
 		}
 		
 	}
