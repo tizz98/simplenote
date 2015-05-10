@@ -1,6 +1,5 @@
 # SimpleNote
-
-https://mysimplenote.herokuapp.com/
+[![Build Status](https://travis-ci.org/tizz98/simplenote.svg?branch=master)](https://travis-ci.org/tizz98/simplenote)
 
 ## What is this?
 This is a simple note creation web application written in PHP, using the [Laravel 5.0 framework](http://laravel.com).
