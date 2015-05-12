@@ -128,7 +128,39 @@
 
 		<div class="form-group">
 		    <input class="btn btn-primary" type="submit" value="Sign In">
-		    <a class="btn btn-link" href="http://127.0.0.1:8000/password/email">Forgot Your Password?</a>
+		    {{#link-to 'passwordReset' classNames='btn btn-link'}}Forgot Your Password?{{/link-to}}
+		</div>
+	</script>
+	<script type="text/x-handlebars" data-template-name='passwordReset'>
+		<div class="container-fluid">
+			<div class='row'>
+				<div class='col-md-8 col-md-offset-2'>
+					<div class='panel panel-default'>
+						<div class='panel-heading'>
+							Reset Password
+						</div>
+						<div class='form-horizontal'>
+							<div class='panel-body'>
+								<div class='form-group'>
+									<label class='col-md-4 control-label'>
+										Email Address
+									</label>
+									<div class='col-md-6'>
+										<input type='email' class='form-control' name='email'/>
+									</div>
+								</div>
+								<div class='form-group'>
+									<div class='col-md-6 col-md-offset-4'>
+										<button type='button' class='btn btn-primary'>
+											Send Password Reset Link
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</script>
 
