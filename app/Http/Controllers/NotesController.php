@@ -26,7 +26,7 @@ class NotesController extends Controller {
 	 */
 	public function index()
 	{
-		$notes = User::find(Auth::User()->id)->notes;
+		$notes = Note::where('user_id', '=', Auth::User()->id)->paginate(5);
 		for ($i=0; $i < count($notes); $i++) { 
 			$notes[$i]->shortText = substr($notes[$i]->body_text, 0, 500);
 		}

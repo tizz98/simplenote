@@ -25,7 +25,7 @@ class CollectionsController extends Controller {
 	 */
 	public function index()
 	{
-		$collections = User::find(Auth::User()->id)->collections;
+		$collections = Collection::where('user_id', '=', Auth::User()->id)->paginate(5);
 		$active_triggers = array();
 		return view('collections.index', compact('collections', 'active_triggers'));
 	}
@@ -93,23 +93,12 @@ class CollectionsController extends Controller {
 			}
 		}
 
-		$temp_notes = array();
-
-		for ($i=0; $i < count($collection->notes); $i++) { 
-			$note = $collection->notes[$i];
-
-			if ($note->is_public || ($note->user == Auth::User())) {
-				$note->shortText = substr($note->body_text, 0, 500);
-				array_push($temp_notes, $note);
-			}
-		}
-
 		$temp_str = 'collections/' . $id;
 		$active_triggers = [$temp_str];
 
-		$collection->notes = $temp_notes;
+		$notes = $collection->notes()->paginate(5);
 
-		return view('collections.show', compact('collection', 'active_triggers'));
+		return view('collections.show', compact('collection', 'notes', 'active_triggers'));
 	}
 
 	/**
