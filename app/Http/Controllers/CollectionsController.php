@@ -25,7 +25,7 @@ class CollectionsController extends Controller {
 	 */
 	public function index()
 	{
-		$collections = User::find(Auth::User()->id)->collections;
+		$collections = Collection::where('user_id', '=', Auth::User()->id)->paginate(5);
 		$active_triggers = array();
 		return view('collections.index', compact('collections', 'active_triggers'));
 	}
