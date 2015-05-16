@@ -1,5 +1,6 @@
 $light_red: #FF4545;
 $btn_outline_color: #0f0f0f;
+$footer_height: 60px;
 
 // Label colors
 $purple_label_bg: #A74EFF;
@@ -41,14 +42,14 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 2 * $footer_height;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: $footer_height;
 }
 
 .btn-outline {
@@ -94,4 +95,11 @@ a.no-dec {
 .collection {
 	padding: 5px 5px 5px 15px;
 	margin-top: 5px;
+}
+
+.pagination {
+	position: absolute;
+	bottom: 0;
+	padding-bottom: $footer_height;
+	margin-top: 10px;
 }
