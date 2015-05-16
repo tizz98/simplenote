@@ -10,12 +10,15 @@
 @include('flash::message')
 @include('collections.partials._info')
 <hr>
-@foreach($collection->notes as $note)
-<div class="note">
-	@include('notes.partials._info')
-	@include('notes.partials._stats')
-</div>
+@foreach($notes as $note)
+	@if ($note->is_public || $note->user == Auth::User())
+	<div class="note">
+		@include('notes.partials._info')
+		@include('notes.partials._stats')
+	</div>
+	@endif
 @endforeach
+{!! $notes->render() !!}
 @endsection
 
 @section('js')
