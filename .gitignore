@@ -4,3 +4,4 @@
 .DS_STORE
 build.sh
 .sass-cache/
+bin/
