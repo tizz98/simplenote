@@ -5,3 +5,5 @@
 build.sh
 .sass-cache/
 bin/
+.idea/
+
