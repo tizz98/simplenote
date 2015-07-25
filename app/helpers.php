@@ -8,7 +8,7 @@ class Helper {
 			for ($i=0; $i < count($paths) ; $i++) { 
 				if (Request::is($paths[$i]))
 				{
-					return 'active';
+					return $active;
 				}
 			}
 
@@ -16,7 +16,7 @@ class Helper {
 		}
 		else
 		{
-	  		return Request::is($paths) ? 'active' : '';
+	  		return Request::is($paths) ? $active : '';
 		}		
   	}
 
